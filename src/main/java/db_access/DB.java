@@ -15,15 +15,6 @@ import entity.Vendor;
 import util.DateUtils;
 
 
-/**
- * [ DB ] 클래스: 학생 등록, 학생 검색 등을 선택적으로 수행하는 클래스
- *   
- *  o 이 클래스의 모든 멤버변수와 메소드는 static으로 정의
- *  
- *  o main() 메소드에서 DB 클래스 객체 생성하지 않고서 
- *    static 메소드를 호출하여 작업 수행
- */
-
 public class DB {
 
 	static Connection con  = null;

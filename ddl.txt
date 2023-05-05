@@ -1,0 +1,115 @@
+drop database if exists hmarketProject;
+create database hmarketProject;
+
+use hmarketProject;
+
+drop table if exists customer;
+create table customer(
+   cid varchar(20),
+   password varchar(70),
+   cname varchar(20),
+   address varchar(50),
+   phoneNo varchar(30),
+   primary key(cid)
+);
+
+insert into customer values('a123', '1509442',  '임한울',  '경기도 오산시',  '010-1234-1234');   // PW : 1234
+insert into customer values('b123', '1540226',  '석승민',  '경기도 용인시',  '010-2345-2345');  // PW : 2345
+insert into customer values('c123', '1571010',  '허우행',  '경기도 수원시',  '010-3456-3456');  // PW : 3456
+insert into customer values('d123', '1601794',  '김민서',  '경기도 성남시',  '010-4567-4567');  // PW : 4567
+insert into customer values('e123', '1632578',  '이유진',  '경기도 고양시',  '010-5678-5678');  // PW : 5678
+
+drop table if exists product;
+create table product(
+   pno int,
+   pname varchar(50),
+   price int,
+   vid varchar(20),
+   enrolDate varchar(50),
+   primary key(pno)
+);
+
+insert into product values(100, '아이폰13', 1500000, 'apple', '2021-03-01');
+insert into product values(200, '아이패드', 2000000, 'apple', '2021-03-01');
+insert into product values(300, '맥북', 3000000, 'apple', '2021-04-01');
+insert into product values(400, '에어팟', 300000, 'apple', '2021-04-01');
+insert into product values(500, '애플워치', 600000, 'apple', '2021-04-01');
+insert into product values(600, 'LG세탁기', 1500000, 'lg', '2021-05-01');
+insert into product values(700, 'LG냉장고', 3000000, 'lg', '2021-05-01');
+insert into product values(800, '삼성스마트TV', 8000000, 'samsung', '2021-06-01');
+insert into product values(900, '삼성스마트냉장고', 4000000, 'samsung', '2021-06-01');
+
+drop table if exists purchase;
+create table purchase(
+   orderNo int,
+   cid varchar(20),
+   pno int,
+   orderCount int,
+       paymentAmount int,
+   orderDate varchar(50),
+   paymentMethod varchar(50),
+   orderStatus varchar(50),
+   primary key(orderNo)
+);
+
+insert into purchase values(1001, 'a123', 100, 2, 3000000, '2022-03-20', '무통장입금', '주문처리완료');
+insert into purchase values(1002, 'b123', 200, 2, 4000000, '2022-03-22', '신용카드', '주문처리완료');
+insert into purchase values(1003, 'c123', 300, 1, 3000000, '2022-03-21', '무통장입금', '주문처리완료');
+insert into purchase values(1004, 'd123', 400, 5, 1500000, '2022-03-25', '신용카드', '주문처리완료');
+insert into purchase values(1005, 'e123', 500, 2, 1200000, '2022-03-26', '신용카드', '주문처리완료');
+insert into purchase values(1006, 'a123', 600, 1, 1500000, '2022-03-13', '신용카드', '주문처리완료');
+insert into purchase values(1007, 'b123', 700, 2, 6000000, '2022-03-15', '신용카드', '주문처리완료');
+insert into purchase values(1008, 'c123', 800, 1, 8000000, '2022-03-18', '신용카드', '주문처리완료');
+insert into purchase values(1009, 'd123', 900, 1, 4000000, '2022-03-21', '신용카드', '주문처리완료');
+
+drop table if exists vendor;
+create table vendor(
+   vid varchar(20),
+   password varchar(70),
+   vname varchar(30),
+   address varchar(50),
+   phoneNo varchar(30),
+   primary key(vid)
+);
+
+insert into vendor values('apple', '1234', '애플', '서울 강남구 신사동' , '080-500-0029');
+insert into vendor values('samsung', '2345', '삼성전자', '경기도 화성시 경기대로', '031-312-9492');
+insert into vendor values('lg', '3456', 'LG전자', '경기도 수원시 만성대로', '031-236-6752');
+
+drop table if exists deliver;
+create table deliver(
+   dno int,
+   vid varchar(20),
+   cid varchar(20),
+   pno int,
+   sendDate varchar(50),
+   arrivalDate varchar(50),
+   deliveryStatus varchar(50),
+   primary key(dno)
+);
+
+insert into deliver values(200100, 'apple', 'a123', 100, '2022-03-22', '2022-03-25', '배송완료');
+insert into deliver values(200200, 'apple', 'b123', 200, '2022-03-24', '2022-03-27', '배송완료');
+insert into deliver values(200300, 'apple', 'c123', 300, '2022-03-23', '2022-03-26', '배송완료');
+insert into deliver values(200400, 'apple', 'd123', 400, '2022-03-27', '2022-03-30', '배송완료');
+insert into deliver values(200500, 'apple', 'e123', 500, '2022-03-27', '2022-03-30', '배송완료');
+insert into deliver values(200600, 'lg', 'a123', 600, '2022-03-13', '2022-03-16', '배송완료');
+insert into deliver values(200700, 'lg', 'b123', 700, '2022-03-15', '2022-03-18', '배송완료');
+insert into deliver values(200800, 'samsung', 'c123', 800, '2022-03-18', '2022-03-21', '배송완료');
+insert into deliver values(200900, 'samsung', 'd123', 900, '2022-03-21', '2022-03-24', '배송완료');
+
+drop table if exists canceled_purchase;
+create table canceled_purchase(
+   cancelDate varchar(50),
+   cancelResult varchar(50),
+   cid varchar(20),
+   pno int,
+   orderCount int,
+   paymentAmount int,
+   orderDate varchar(50),
+   paymentMethod varchar(50),
+   orderStatus varchar(50)
+);
+
+insert into canceled_purchase values('2021-07-21', '취소완료', 'a123', 100, 3, 4500000, '2021-06-11', '무통장입금', '주문처리전');
+insert into canceled_purchase values('2021-07-22', '취소완료', 'b123', 200, 1, 2000000, '2022-06-12', '신용카드', '주문처리전');

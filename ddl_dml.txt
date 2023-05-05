@@ -13,11 +13,11 @@ create table customer(
    primary key(cid)
 );
 
-insert into customer values('a123', '1509442',  '임한울',  '경기도 오산시',  '010-1234-1234');   // PW : 1234
-insert into customer values('b123', '1540226',  '석승민',  '경기도 용인시',  '010-2345-2345');  // PW : 2345
-insert into customer values('c123', '1571010',  '허우행',  '경기도 수원시',  '010-3456-3456');  // PW : 3456
-insert into customer values('d123', '1601794',  '김민서',  '경기도 성남시',  '010-4567-4567');  // PW : 4567
-insert into customer values('e123', '1632578',  '이유진',  '경기도 고양시',  '010-5678-5678');  // PW : 5678
+insert into customer values('a123', '1234',  '홍길동',  '경기도 오산시',  '010-1234-1234');
+insert into customer values('b123', '2345',  '이순신',  '경기도 용인시',  '010-2345-2345');
+insert into customer values('c123', '3456',  '김철수',  '경기도 수원시',  '010-3456-3456');
+insert into customer values('d123', '4567',  '이유리',  '경기도 성남시',  '010-4567-4567');
+insert into customer values('e123', '5678',  '최맹구',  '경기도 고양시',  '010-5678-5678');
 
 drop table if exists product;
 create table product(
